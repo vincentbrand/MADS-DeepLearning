@@ -1,10 +1,13 @@
 FROM ageron/handson-ml3:latest
 
-# Install Python dependencies into the image (baked in)
-COPY requirements.txt /tmp/requirements.txt
-RUN pip install --no-cache-dir -r /tmp/requirements.txt && rm -f /tmp/requirements.txt
+USER root
+
+COPY requirements.txt /opt/requirements.txt
+RUN /opt/conda/envs/homl3/bin/pip install --no-cache-dir -r /opt/requirements.txt \
+ && rm -f /opt/requirements.txt
+
+# optional: drop back to a non-root user if the image has one
+# (safe to omit; compose runs the command regardless)
+USER devel
 
 EXPOSE 8888
-
-# Local dev: disable token/password
-CMD ["bash", "-lc", "jupyter lab --ip=0.0.0.0 --port=8888 --no-browser --NotebookApp.token='' --NotebookApp.password='' --NotebookApp.allow_remote_access=True"]

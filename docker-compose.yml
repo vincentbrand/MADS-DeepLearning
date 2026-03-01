@@ -1,15 +1,21 @@
 services:
   jupyter:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    build: .
     image: handson-ml3-dev:local
-    container_name: handson-ml3
+    platform: linux/amd64
+    container_name: MADS-Jupyter
     ports:
       - "127.0.0.1:8888:8888"
     volumes:
-      - ./notebooks:/home/jovyan/work
-    environment:
-      - JUPYTER_TOKEN=
-      - JUPYTER_PASSWORD=
+      - ./notebooks:/home/devel/work
     restart: unless-stopped
+    command:
+      - /opt/conda/envs/homl3/bin/jupyter
+      - lab
+      - --ip=0.0.0.0
+      - --port=8888
+      - --no-browser
+      - --ServerApp.token=
+      - --ServerApp.password=
+      - --ServerApp.allow_remote_access=True
+      - --ServerApp.root_dir=/home/devel/work

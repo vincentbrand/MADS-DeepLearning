@@ -1,4 +1,4 @@
-.PHONY: up down build rebuild logs shell ps
+.PHONY: up down build rebuild logs shell ps clean
 
 SERVICE := jupyter
 
@@ -8,13 +8,15 @@ up:
 down:
 	docker compose down
 
+clean:
+	docker compose down --remove-orphans
+	# If you still have a manually created container with the old name, remove it:
+	-docker rm -f handson-ml3 2>/dev/null || true
+
 build:
 	docker compose build --no-cache
 
-rebuild:
-	docker compose down
-	docker compose build --no-cache
-	docker compose up -d
+rebuild: clean build up
 	@echo "Rebuilt and started. Open http://localhost:8888"
 
 logs:
