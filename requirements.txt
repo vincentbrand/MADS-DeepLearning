@@ -1,0 +1,5 @@
+# Add your pip packages here (pin versions if you want reproducibility)
+# numpy==2.0.0
+
+jupyterlab-lsp
+python-lsp-server

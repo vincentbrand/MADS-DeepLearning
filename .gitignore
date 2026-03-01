@@ -1,0 +1,78 @@
+# =========================
+# Python
+# =========================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+pip-wheel-metadata/
+
+# Virtual environments
+venv/
+.venv/
+env/
+ENV/
+
+# =========================
+# Jupyter
+# =========================
+.ipynb_checkpoints/
+*.nbconvert.ipynb
+
+# If you ever export notebooks
+*.html
+*.pdf
+
+# =========================
+# Logs
+# =========================
+*.log
+logs/
+
+# =========================
+# Environment files
+# =========================
+.env
+.env.*
+*.env
+
+# =========================
+# Docker
+# =========================
+# Override files
+docker-compose.override.yml
+
+# Docker volumes (if ever created locally)
+*.tar
+
+# =========================
+# IDE / Editor
+# =========================
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# =========================
+# OS Files
+# =========================
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# =========================
+# Project-specific
+# =========================
+# Uncomment if you do NOT want notebooks tracked
+# notebooks/
+
+# Temporary data / experiments
+data/
+outputs/
+tmp/
